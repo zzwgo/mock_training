@@ -45,6 +45,12 @@ public class SalesAppTest {
 
         assertTrue(list.contains("Time"));
     }
+    @Test
+    public void should_return_List_contains_Time_when_call_getHeaders_given_false(){
+        SalesApp salesApp = new SalesApp();
 
+        List<String> list=salesApp.getHeaders(false);
 
+        assertTrue(list.contains("Local Time"));
+    }
 }
