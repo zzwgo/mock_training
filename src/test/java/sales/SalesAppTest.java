@@ -37,5 +37,14 @@ public class SalesAppTest {
         assertNotNull(sales);
     }
 
+    @Test
+    public void should_return_List_contains_Time_when_call_getHeaders_given_true(){
+        SalesApp salesApp = new SalesApp();
+
+        List<String> list=salesApp.getHeaders(true);
+
+        assertTrue(list.contains("Time"));
+    }
+
 
 }
