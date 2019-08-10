@@ -69,6 +69,14 @@ public class SalesAppTest {
 
         assertTrue(list.contains("Local Time"));
     }
+    @Test
+    public void should_return__when_call_getFilterReportDataList_given_maxrow_0(){
+        SalesApp salesApp = spy(new SalesApp());
 
+        List<SalesReportData> salesReportDataList=mock(List.class);
+        List<SalesReportData> resultList=salesApp.getFilterReportDataList(0,true,salesReportDataList);
+
+        assertFalse(resultList.size()>0);
+    }
 
 }
