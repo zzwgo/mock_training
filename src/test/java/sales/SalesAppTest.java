@@ -2,6 +2,7 @@ package sales;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -77,6 +78,22 @@ public class SalesAppTest {
         List<SalesReportData> resultList=salesApp.getFilterReportDataList(0,true,salesReportDataList);
 
         assertFalse(resultList.size()>0);
+    }
+    @Test
+    public void should_call_uploadDocument_methods_when_call_generateSalesActivityReport(){
+        SalesApp salesApp = spy(new SalesApp());
+
+        SalesReportDao salesReportDao=mock(SalesReportDao.class);
+        when(salesReportDao.getReportData(any())).thenReturn(new ArrayList<>());
+
+        doReturn(new Sales()).when(salesApp).getSales(any());
+        doReturn(salesReportDao).when(salesApp).getSalesReportDao();
+        doReturn(new ArrayList<>()).when(salesApp).getHeaders(anyBoolean());
+        doReturn(new SalesActivityReport()).when(salesApp).generateReport(any(),any());
+
+        salesApp.generateSalesActivityReport(anyString(),anyInt(),anyBoolean(),anyBoolean());
+
+        verify(salesApp,times(1)).uploadDocument(any());
     }
 
 }

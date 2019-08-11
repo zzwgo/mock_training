@@ -55,7 +55,7 @@ public class SalesApp {
         return new EcmService();
     }
 
-    private SalesActivityReport generateReport(List<String> headers, List<SalesReportData> reportDataList) {
+    protected SalesActivityReport generateReport(List<String> headers, List<SalesReportData> reportDataList) {
         // TODO Auto-generated method stub
         return null;
     }
